@@ -1,0 +1,29 @@
+[
+  { "name": "XIS SALADA", "description": "Pão, milho, ervilha, maionese, tomate, ovo, tempero verde, alface, catchup, mostarda, queijo, presunto e bife.", "price": 22, "category": "Xis", "image": "/default-image.png" },
+  { "name": "XIS FRANGO", "description": "Pão, milho, ervilha, maionese, tomate, ovo, tempero verde, alface, catchup, mostarda, queijo, presunto e frango.", "price": 24, "category": "Xis", "image": "/default-image.png" },
+  { "name": "XIS CALABRESA", "description": "Pão, milho, ervilha, maionese, tomate, ovo, tempero verde, alface, catchup, mostarda, queijo, presunto e calabresa.", "price": 27, "category": "Xis", "image": "/default-image.png" },
+  { "name": "XIS BACON", "description": "Pão, milho, ervilha, maionese, tomate, ovo, tempero verde, alface, catchup, mostarda, queijo, presunto e bacon.", "price": 28, "category": "Xis", "image": "/default-image.png" },
+  { "name": "XIS CORAÇÃO", "description": "Pão, milho, ervilha, maionese, tomate, ovo, tempero verde, alface, catchup, mostarda, queijo, presunto e coração.", "price": 29, "category": "Xis", "image": "/default-image.png" },
+  { "name": "XIS TUDO", "description": "Pão, milho, ervilha, maionese, tomate, ovo, tempero verde, alface, catchup, mostarda, queijo, presunto, calabresa, coração e frango.", "price": 29, "category": "Xis", "image": "/default-image.png" },
+
+  { "name": "Batata frita", "description": "Adicional de batata frita.", "price": 2, "category": "Adicional", "image": "/default-image.png" },
+  { "name": "Torrada com ovo", "description": "Torrada com ovo.", "price": 15, "category": "Adicional", "image": "/default-image.png" },
+  { "name": "Porção de batata frita", "description": "Porção de batata frita.", "price": 0, "category": "Adicional", "image": "/default-image.png" },
+
+  { "name": "Cachorro-quente Simples", "description": "Pão, molho de salsicha, catchup, mostarda, milho, ervilha, batata palha, tempero verde, salsicha.", "price": 17, "category": "Cachorro-quente", "image": "/default-image.png" },
+  { "name": "Cachorro-quente Duplo", "description": "Pão, molho de salsicha, catchup, mostarda, milho, ervilha, batata palha, tempero verde, duas salsichas.", "price": 20, "category": "Cachorro-quente", "image": "/default-image.png" },
+  { "name": "Cachorro-quente de Frango", "description": "Pão, molho de salsicha, catchup, mostarda, milho, ervilha, batata palha, tempero verde e frango.", "price": 22, "category": "Cachorro-quente", "image": "/default-image.png" },
+  { "name": "Cachorro-quente de Carne", "description": "Pão, molho de salsicha, catchup, mostarda, milho, ervilha, batata palha, tempero verde e carne.", "price": 22, "category": "Cachorro-quente", "image": "/default-image.png" },
+  { "name": "Cachorro-quente de Calabresa", "description": "Pão, molho de salsicha, catchup, mostarda, milho, ervilha, batata palha, tempero verde e calabresa.", "price": 24, "category": "Cachorro-quente", "image": "/default-image.png" },
+
+  { "name": "Picadão 1 pessoa", "description": "Ovos codorna, pepino, brócolis, azeitonas, queijo, batatinha frita, polenta, anéis de cebola, empanadinho, carne res, frango, coração, calabresa.", "price": 50, "category": "Picadão", "image": "/default-image.png" },
+  { "name": "Picadão 2 pessoas", "description": "Ovos codorna, pepino, brócolis, azeitonas, queijo, batatinha frita, polenta, anéis de cebola, empanadinho, carne res, frango, coração, calabresa.", "price": 85, "category": "Picadão", "image": "/default-image.png" },
+  { "name": "Picadão 3 pessoas", "description": "Ovos codorna, pepino, brócolis, azeitonas, queijo, batatinha frita, polenta, anéis de cebola, empanadinho, carne res, frango, coração, calabresa.", "price": 108, "category": "Picadão", "image": "/default-image.png" },
+  { "name": "Picadão 4 pessoas", "description": "Ovos codorna, pepino, brócolis, azeitonas, queijo, batatinha frita, polenta, anéis de cebola, empanadinho, carne res, frango, coração, calabresa.", "price": 140, "category": "Picadão", "image": "/default-image.png" },
+
+  { "name": "Refri lata Guaraná", "description": "Refrigerante lata Guaraná.", "price": 5, "category": "Bebida", "image": "/default-image.png" },
+  { "name": "Refri lata Pepsi", "description": "Refrigerante lata Pepsi.", "price": 5, "category": "Bebida", "image": "/default-image.png" },
+  { "name": "Guaraná 2L", "description": "Refrigerante Guaraná 2L.", "price": 11, "category": "Bebida", "image": "/default-image.png" },
+  { "name": "Pepsi 2L", "description": "Refrigerante Pepsi 2L.", "price": 11, "category": "Bebida", "image": "/default-image.png" },
+  { "name": "Cerveja lata", "description": "Cerveja lata.", "price": 6, "category": "Bebida", "image": "/default-image.png" }
+] 
