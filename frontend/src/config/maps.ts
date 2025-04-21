@@ -1,6 +1,6 @@
 import { Libraries } from '@react-google-maps/api';
 
-const GOOGLE_MAPS_API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY || '';
+const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || '';
 
 export const GOOGLE_MAPS_CONFIG = {
   apiKey: GOOGLE_MAPS_API_KEY,
