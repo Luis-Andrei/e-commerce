@@ -1,16 +1,17 @@
 # Dependencies
 node_modules/
-/.pnp
+.pnp/
 .pnp.js
 
 # Testing
-/coverage
+coverage/
 
 # Production
-/build
-/dist
+build/
+dist/
 
-# Environment files
+# Misc
+.DS_Store
 .env
 .env.local
 .env.development.local
@@ -23,16 +24,18 @@ yarn-debug.log*
 yarn-error.log*
 
 # Editor directories and files
-.idea
-.vscode
+.idea/
+.vscode/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
 
+# TypeScript
+*.tsbuildinfo
+
 # OS generated files
-.DS_Store
 .DS_Store?
 ._*
 .Spotlight-V100
