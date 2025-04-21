@@ -1,40 +1,30 @@
-# E-commerce Full Stack
+# Meu E-commerce
 
-Projeto de e-commerce completo com as seguintes funcionalidades:
+Este é um projeto de e-commerce desenvolvido com React, TypeScript, Node.js e MongoDB.
 
-- 🛍️ Catálogo de produtos
-- 🛒 Carrinho de compras
-- 🔐 Sistema de autenticação (login/cadastro)
-- 💳 Checkout com integração de pagamento
-- 👨‍💼 Painel administrativo
-- 📦 Confirmação de pedidos
+## Funcionalidades
+
+- Catálogo de produtos
+- Carrinho de compras
+- Sistema de autenticação
+- Gerenciamento de endereços
+- Processamento de pedidos
 
 ## Tecnologias Utilizadas
 
-### Frontend
-- React
-- TypeScript
-- Material-UI ou Tailwind CSS
-- Redux Toolkit (gerenciamento de estado)
-- React Router (navegação)
-
-### Backend
-- Node.js
-- Express
-- TypeScript
-- PostgreSQL/MongoDB
-- JWT (autenticação)
-
-## Estrutura do Projeto
-
-```
-ecommerce/
-├── frontend/           # Aplicação React
-├── backend/           # API Node.js
-└── README.md
-```
+- Frontend: React, TypeScript, Material-UI
+- Backend: Node.js, Express, MongoDB
+- Autenticação: JWT
+- Deploy: Vercel
 
 ## Como Executar
+
+### Frontend
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
 ### Backend
 ```bash
@@ -43,18 +33,9 @@ npm install
 npm run dev
 ```
 
-### Frontend
-```bash
-cd frontend
-npm install
-npm start
-```
+## Configuração
 
-## Funcionalidades
-
-- [ ] Catálogo de produtos
-- [ ] Carrinho de compras
-- [ ] Sistema de login/cadastro
-- [ ] Checkout com pagamento
-- [ ] Painel administrativo
-- [ ] Confirmação de pedidos 
+1. Clone o repositório
+2. Instale as dependências
+3. Configure as variáveis de ambiente
+4. Execute os servidores 
