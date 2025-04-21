@@ -3,9 +3,12 @@ import Product from '../models/Product';
 
 export const getProducts = async (req: Request, res: Response) => {
   try {
+    console.log('Buscando produtos...');
     const products = await Product.find();
+    console.log(`Encontrados ${products.length} produtos`);
     res.json(products);
   } catch (error) {
+    console.error('Erro ao buscar produtos:', error);
     res.status(500).json({ message: 'Erro ao buscar produtos' });
   }
 };

@@ -11,7 +11,7 @@ const products = [
     description: 'Pão, milho, ervilha, maionese, tomate, ovo, tempero verde, alface, catchup, mostarda, queijo, presunto e bife.',
     price: 22.00,
     category: 'XIS',
-    image: 'https://example.com/xis-salada.jpg'
+    image: 'https://www.rbsdirect.com.br/imagesrc/25692330.jpg?w=1200&h=630&a=c&version=1575255600'
   },
   {
     name: 'XIS FRANGO',
@@ -48,50 +48,7 @@ const products = [
     category: 'XIS',
     image: 'https://example.com/xis-tudo.jpg'
   },
-  // ADICIONAIS
-  {
-    name: 'Batata Frita',
-    description: 'Adicionado dentro do Xis ou cachorro-quente',
-    price: 2.00,
-    category: 'ADICIONAIS',
-    image: 'https://example.com/batata-frita.jpg'
-  },
-  {
-    name: 'Torrada com Ovo',
-    description: 'Torrada com ovo.',
-    price: 15.00,
-    category: 'ADICIONAIS',
-    image: 'https://example.com/torrada-ovo.jpg'
-  },
-  // PICADÃO
-  {
-    name: 'PICADÃO 1 Pessoa',
-    description: 'Ovos de codorna, pepino, brócolis, azeitonas, queijo, batatinha frita, polenta, anéis de cebola, empanadinhos, carne, frango, coração, calabresa.',
-    price: 50.00,
-    category: 'PICADÃO',
-    image: 'https://example.com/picadao-1p.jpg'
-  },
-  {
-    name: 'PICADÃO 2 Pessoas',
-    description: 'Ovos de codorna, pepino, brócolis, azeitonas, queijo, batatinha frita, polenta, anéis de cebola, empanadinhos, carne, frango, coração, calabresa.',
-    price: 85.00,
-    category: 'PICADÃO',
-    image: 'https://example.com/picadao-2p.jpg'
-  },
-  {
-    name: 'PICADÃO 3 Pessoas',
-    description: 'Ovos de codorna, pepino, brócolis, azeitonas, queijo, batatinha frita, polenta, anéis de cebola, empanadinhos, carne, frango, coração, calabresa.',
-    price: 108.00,
-    category: 'PICADÃO',
-    image: 'https://example.com/picadao-3p.jpg'
-  },
-  {
-    name: 'PICADÃO 4 Pessoas',
-    description: 'Ovos de codorna, pepino, brócolis, azeitonas, queijo, batatinha frita, polenta, anéis de cebola, empanadinhos, carne, frango, coração, calabresa.',
-    price: 140.00,
-    category: 'PICADÃO',
-    image: 'https://example.com/picadao-4p.jpg'
-  },
+
   // CACHORRO-QUENTE
   {
     name: 'Cachorro-Quente Simples',
@@ -128,6 +85,53 @@ const products = [
     category: 'CACHORRO-QUENTE',
     image: 'https://example.com/cachorro-calabresa.jpg'
   },
+
+  // PICADÃO
+  {
+    name: 'PICADÃO 1 Pessoa',
+    description: 'Ovos de codorna, pepino, brócolis, azeitonas, queijo, batatinha frita, polenta, anéis de cebola, empanadinhos, carne, frango, coração, calabresa.',
+    price: 50.00,
+    category: 'PICADÃO',
+    image: 'https://example.com/picadao-1p.jpg'
+  },
+  {
+    name: 'PICADÃO 2 Pessoas',
+    description: 'Ovos de codorna, pepino, brócolis, azeitonas, queijo, batatinha frita, polenta, anéis de cebola, empanadinhos, carne, frango, coração, calabresa.',
+    price: 85.00,
+    category: 'PICADÃO',
+    image: 'https://example.com/picadao-2p.jpg'
+  },
+  {
+    name: 'PICADÃO 3 Pessoas',
+    description: 'Ovos de codorna, pepino, brócolis, azeitonas, queijo, batatinha frita, polenta, anéis de cebola, empanadinhos, carne, frango, coração, calabresa.',
+    price: 108.00,
+    category: 'PICADÃO',
+    image: 'https://example.com/picadao-3p.jpg'
+  },
+  {
+    name: 'PICADÃO 4 Pessoas',
+    description: 'Ovos de codorna, pepino, brócolis, azeitonas, queijo, batatinha frita, polenta, anéis de cebola, empanadinhos, carne, frango, coração, calabresa.',
+    price: 140.00,
+    category: 'PICADÃO',
+    image: 'https://example.com/picadao-4p.jpg'
+  },
+
+  // ADICIONAIS
+  {
+    name: 'Batata Frita',
+    description: 'Adicionado dentro do Xis ou cachorro-quente',
+    price: 2.00,
+    category: 'ADICIONAIS',
+    image: 'https://example.com/batata-frita.jpg'
+  },
+  {
+    name: 'Torrada com Ovo',
+    description: 'Torrada com ovo.',
+    price: 15.00,
+    category: 'ADICIONAIS',
+    image: 'https://example.com/torrada-ovo.jpg'
+  },
+
   // BEBIDAS
   {
     name: 'Refrigerante Lata Guaraná',

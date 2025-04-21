@@ -7,7 +7,9 @@
     "start": "node dist/server.js",
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "build": "tsc",
-    "test": "jest"
+    "test": "jest",
+    "init-products": "ts-node src/scripts/initializeProducts.ts",
+    "reset-products": "ts-node src/scripts/resetProducts.ts"
   },
   "dependencies": {
     "@types/mongoose": "^5.11.96",

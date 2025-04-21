@@ -12,33 +12,38 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.protect = void 0;
+exports.protect = exports.authenticate = void 0;
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const User_1 = __importDefault(require("../models/User"));
-const JWT_SECRET = process.env.JWT_SECRET || 'seu_jwt_secret_muito_seguro';
-const protect = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const authenticate = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    var _a;
     try {
-        let token;
-        if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
-            token = req.headers.authorization.split(' ')[1];
-        }
+        const token = (_a = req.header('Authorization')) === null || _a === void 0 ? void 0 : _a.replace('Bearer ', '');
         if (!token) {
-            return res.status(401).json({ message: 'Acesso não autorizado' });
+            return res.status(401).json({ message: 'Token não fornecido' });
         }
-        // Verifica o token
-        const decoded = jsonwebtoken_1.default.verify(token, JWT_SECRET);
-        // Busca o usuário
-        const user = yield User_1.default.findById(decoded.id);
+        if (!process.env.JWT_SECRET) {
+            console.error('JWT_SECRET não está definido');
+            return res.status(500).json({ message: 'Erro interno do servidor' });
+        }
+        const decoded = jsonwebtoken_1.default.verify(token, process.env.JWT_SECRET);
+        const user = yield User_1.default.findById(decoded.userId);
         if (!user) {
             return res.status(401).json({ message: 'Usuário não encontrado' });
         }
-        // Adiciona o usuário ao request
-        req.user = user;
+        req.user = {
+            userId: user._id.toString()
+        };
         next();
     }
     catch (error) {
-        console.error('Erro no middleware de autenticação:', error);
-        res.status(401).json({ message: 'Acesso não autorizado' });
+        console.error('Erro de autenticação:', error);
+        if (error instanceof jsonwebtoken_1.default.JsonWebTokenError) {
+            return res.status(401).json({ message: 'Token inválido ou expirado' });
+        }
+        res.status(500).json({ message: 'Erro interno do servidor' });
     }
 });
-exports.protect = protect;
+exports.authenticate = authenticate;
+// Export protect as an alias for authenticate for backward compatibility
+exports.protect = exports.authenticate;

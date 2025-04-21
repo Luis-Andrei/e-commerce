@@ -12,43 +12,47 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = void 0;
 const mongoose_1 = __importDefault(require("mongoose"));
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
-const userSchema = new mongoose_1.default.Schema({
-    name: {
-        type: String,
-        required: true
-    },
-    email: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    password: {
-        type: String,
-        required: true
-    },
-    address: {
-        type: String,
-        required: [true, 'Endereço é obrigatório']
-    }
-}, {
-    timestamps: true
+const addressSchema = new mongoose_1.default.Schema({
+    street: { type: String, required: true },
+    number: { type: String, required: true },
+    neighborhood: { type: String, required: true },
+    city: { type: String, required: true },
+    state: { type: String, required: true },
+    postalCode: { type: String, required: true }
 });
-// Criptografa a senha antes de salvar
+const userSchema = new mongoose_1.default.Schema({
+    name: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
+    address: addressSchema
+});
+// Hash password before saving
 userSchema.pre('save', function (next) {
     return __awaiter(this, void 0, void 0, function* () {
         if (!this.isModified('password'))
             return next();
-        const salt = yield bcryptjs_1.default.genSalt(10);
-        this.password = yield bcryptjs_1.default.hash(this.password, salt);
-        next();
+        try {
+            const salt = yield bcryptjs_1.default.genSalt(10);
+            this.password = yield bcryptjs_1.default.hash(this.password, salt);
+            next();
+        }
+        catch (error) {
+            next(error);
+        }
     });
 });
-// Método para comparar senhas
+// Compare password method
 userSchema.methods.comparePassword = function (candidatePassword) {
     return __awaiter(this, void 0, void 0, function* () {
-        return bcryptjs_1.default.compare(candidatePassword, this.password);
+        try {
+            return yield bcryptjs_1.default.compare(candidatePassword, this.password);
+        }
+        catch (error) {
+            throw error;
+        }
     });
 };
 const User = mongoose_1.default.model('User', userSchema);

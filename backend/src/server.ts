@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import path from 'path';
 import userRoutes from './routes/userRoutes';
 import authRoutes from './routes/authRoutes';
 import productRoutes from './routes/productRoutes';
@@ -13,13 +14,16 @@ const app = express();
 
 // Middlewares
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:5174', 'http://localhost:5175', 'http://localhost:5176'],
+  origin: ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:3002', 'http://localhost:5173', 'http://localhost:5174', 'http://localhost:5175', 'http://localhost:5176'],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 app.use(express.json());
+
+// Servir arquivos estáticos
+app.use('/images', express.static(path.join(__dirname, '../../frontend/public/images')));
 
 // Logging middleware
 app.use((req, res, next) => {
