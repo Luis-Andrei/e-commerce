@@ -1,7 +1,19 @@
 {
-  "name": "ecommerce-root",
-  "private": true,
+  "name": "my-ecommerce",
+  "version": "1.0.0",
+  "description": "E-commerce fullstack application",
   "scripts": {
-    "vercel-build": "cd frontend && npm install && npm run build"
-  }
+    "start": "docker-compose up",
+    "dev": "docker-compose up --build",
+    "stop": "docker-compose down",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ecommerce",
+    "react",
+    "node",
+    "mongodb"
+  ],
+  "author": "",
+  "license": "ISC"
 }
