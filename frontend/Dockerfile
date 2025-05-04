@@ -1,20 +1,14 @@
-# Use Node.js LTS
-FROM node:18-alpine
+# Dockerfile para o frontend
+FROM node:18
 
-# Create app directory
-WORKDIR /app
+WORKDIR /frontend
 
-# Install app dependencies
-COPY package*.json ./
+COPY ./frontend/package.json ./frontend/package-lock.json ./
 
-# Install dependencies
 RUN npm install
 
-# Copy app source
-COPY . .
+COPY ./frontend /frontend
 
-# Expose port
-EXPOSE 5173
+EXPOSE 3000
 
-# Start the app with hot-reload
-CMD ["npm", "run", "dev"] 
+CMD ["npm", "start"] 

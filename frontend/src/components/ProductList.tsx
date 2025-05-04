@@ -22,6 +22,7 @@ import {
 } from '@mui/material';
 import { Search as SearchIcon, ShoppingCart as CartIcon } from '@mui/icons-material';
 import { useCart, Product } from '../contexts/CartContext';
+import { API_ENDPOINTS } from '../config/host';
 
 const ProductList: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -35,7 +36,7 @@ const ProductList: React.FC = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('/api/products');
+        const response = await fetch(API_ENDPOINTS.PRODUCTS);
         if (!response.ok) {
           throw new Error('Erro ao carregar produtos');
         }

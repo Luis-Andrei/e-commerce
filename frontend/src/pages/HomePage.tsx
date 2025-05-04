@@ -38,6 +38,14 @@ const HomePage: React.FC = () => {
         minHeight: '100vh',
       }}
     >
+      {/* Imagem da Lancheria 3 Aliança */}
+      <Box sx={{ textAlign: 'center', mb: 4 }}>
+        <img
+          src="/images/lancheria-3-alianca.png"
+          alt="Lancheria 3 Aliança"
+          style={{ width: '100%', maxWidth: 400, height: 'auto', borderRadius: 16, boxShadow: '0 4px 16px rgba(0,0,0,0.08)' }}
+        />
+      </Box>
       {/* Hero Section */}
       <Box
         component="header"

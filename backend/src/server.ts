@@ -6,6 +6,7 @@ import path from 'path';
 import userRoutes from './routes/userRoutes';
 import authRoutes from './routes/authRoutes';
 import productRoutes from './routes/productRoutes';
+import Product from './models/Product';
 
 // Carrega as variáveis de ambiente
 dotenv.config();
@@ -58,4 +59,45 @@ const PORT = process.env.PORT || 5001;
 
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
-}); 
+});
+
+const seed = async () => {
+  try {
+    await mongoose.connect(MONGODB_URI);
+    console.log('MongoDB conectado');
+
+    await Product.deleteMany();
+    console.log('Coleção de produtos limpa');
+
+    const produtos = [
+      {
+        name: 'Camiseta Rocketseat',
+        price: 49.90,
+        description: 'Camiseta oficial da Rocketseat na cor preta.',
+        image: '/images/camiseta-rocketseat.png'
+      },
+      {
+        name: 'Mouse Gamer RGB',
+        price: 99.99,
+        description: 'Mouse gamer com iluminação RGB e 7 botões programáveis.',
+        image: '/images/mouse-gamer.png'
+      },
+      {
+        name: 'Teclado Mecânico',
+        price: 149.90,
+        description: 'Teclado mecânico switch blue com iluminação LED.',
+        image: '/images/teclado-mecanico.png'
+      }
+    ];
+
+    await Product.insertMany(produtos);
+    console.log('Produtos adicionados com sucesso');
+
+    process.exit(0);
+  } catch (error) {
+    console.error('Erro ao popular banco:', error);
+    process.exit(1);
+  }
+};
+
+seed(); 

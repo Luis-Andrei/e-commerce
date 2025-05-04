@@ -1,23 +1,14 @@
-# Use Node.js LTS
-FROM node:18-alpine
+# Dockerfile para o backend
+FROM node:18
 
-# Create app directory
-WORKDIR /app
+WORKDIR /backend
 
-# Install app dependencies
-COPY package*.json ./
+COPY ./backend/package.json ./backend/package-lock.json ./
 
-# Install dependencies
 RUN npm install
 
-# Copy app source
-COPY . .
+COPY ./backend /backend
 
-# Build TypeScript
-RUN npm run build
+EXPOSE 5000
 
-# Expose port
-EXPOSE 5001
-
-# Start the app
 CMD ["npm", "start"] 

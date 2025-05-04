@@ -1,7 +1,7 @@
-import { createBrowserRouter, Navigate } from "react-router-dom";
+import { createBrowserRouter, Navigate, RouteObject } from "react-router-dom";
 import React from "react";
 import ProtectedRoute from "./ProtectedRoute";
-import Layout from '../layouts/Layout';
+import MainLayout from '../layouts/MainLayout';
 import ProductList from '../components/ProductList';
 import Cart from '../components/Cart';
 import Login from '../components/Login';
@@ -33,12 +33,12 @@ const OrderConfirmation = () => (
 const WrappedLayout = () => (
   <AuthProvider>
     <CartProvider>
-      <Layout />
+      <MainLayout />
     </CartProvider>
   </AuthProvider>
 );
 
-export const router = createBrowserRouter([
+export const routes: RouteObject[] = [
   {
     path: '/',
     element: <WrappedLayout />,
@@ -86,4 +86,6 @@ export const router = createBrowserRouter([
       }
     ],
   }
-]); 
+];
+
+export const router = createBrowserRouter(routes); 
