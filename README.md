@@ -1,8 +1,24 @@
-# Sistema de E-commerce
+# 🛍️ Sistema de E-commerce
 
-Sistema completo de e-commerce com painel administrativo e monitor de impressão.
+[![Node.js Version](https://img.shields.io/badge/node.js-16%2B-green.svg)](https://nodejs.org/)
+[![MongoDB Version](https://img.shields.io/badge/mongodb-4.4%2B-green.svg)](https://www.mongodb.com/)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Status](https://img.shields.io/badge/status-active-success.svg)]()
 
-## Estrutura do Projeto
+Sistema completo de e-commerce com painel administrativo e monitor de impressão, desenvolvido com tecnologias modernas e escaláveis.
+
+## ✨ Funcionalidades
+
+- 🛒 Loja virtual completa
+- 👨‍💼 Painel administrativo
+- 📊 Monitor de impressão
+- 🔄 Sincronização de estoque
+- 🔐 Sistema de autenticação
+- 📱 Design responsivo
+- 🚀 API RESTful
+- 📦 Docker support
+
+## 🏗️ Estrutura do Projeto
 
 ```
 /meu-ecommerce/
@@ -57,98 +73,105 @@ Sistema completo de e-commerce com painel administrativo e monitor de impressão
 └── LICENSE
 ```
 
-## Requisitos
+## 📋 Pré-requisitos
 
 - Node.js 16+
 - Python 3.8+
 - MongoDB 4.4+
 - Docker e Docker Compose (opcional)
 
-## Instalação e Execução
+## 🚀 Instalação e Execução
 
-### Frontend (Loja Virtual)
+### 1. Clone o repositório
 
 ```bash
-cd frontend
-npm install
-npm run dev
+git clone https://github.com/Luis-Andrei/e-commerce.git
+cd e-commerce
 ```
 
-Acesse: `http://localhost:3000`
+### 2. Configuração do Ambiente
 
-### Backend (API)
-
+#### Backend
 ```bash
 cd backend
+cp .env.example .env  # Configure as variáveis de ambiente
 npm install
-npm start
 ```
 
-API disponível em: `http://localhost:5000`
-
-### Painel Administrativo
-
+#### Frontend
 ```bash
-cd admin-panel
+cd frontend
+cp .env.example .env  # Configure as variáveis de ambiente
 npm install
+```
+
+### 3. Iniciando os Serviços
+
+#### Backend (API)
+```bash
+cd backend
 npm run dev
 ```
+API disponível em: `http://localhost:5000`
 
+#### Frontend (Loja Virtual)
+```bash
+cd frontend
+npm run dev
+```
+Acesse: `http://localhost:3000`
+
+#### Painel Administrativo
+```bash
+cd admin-panel
+npm run dev
+```
 Acesse: `http://localhost:3001`
 
-### Scripts Utilitários
+### 4. Scripts Utilitários
 
-1. Monitor de Impressão:
+#### Monitor de Impressão
 ```bash
 cd scripts
-pip install -r requirements.txt
 python imprimir_notas.py
 ```
 
-2. Sincronização de Estoque:
+#### Sincronização de Estoque
 ```bash
 cd scripts
 python sync_estoque.py
 ```
 
-## API REST
+## 🐳 Docker
 
-Endpoints principais:
-
-- `/api/products` - Produtos
-- `/api/orders` - Pedidos
-- `/api/users` - Usuários
-- `/api/auth` - Autenticação
-- `/api/admin` - Administração
-
-Documentação completa: `http://localhost:5000/api-docs`
-
-## Docker
-
-Para executar todo o ambiente:
+Para executar todo o ambiente usando Docker:
 
 ```bash
 docker-compose up
 ```
 
-## Monitor de Impressão
+## 📚 Documentação
 
-O script `imprimir_notas.py` monitora a pasta `C:\notas_filcar` e imprime automaticamente PDFs. Características:
+- [Documentação da API](docs/API.md)
+- [Estrutura do Projeto](docs/ESTRUTURA.md)
 
-- Monitoramento contínuo
-- Impressão automática
-- Logs detalhados
-- Tratamento de erros
-- Evita duplicação
+## 🤝 Contribuindo
 
-## Contribuição
-
-1. Fork do projeto
-2. Crie uma branch (`git checkout -b feature/nova-feature`)
+1. Faça um fork do projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/nova-feature`)
 3. Commit suas mudanças (`git commit -m 'Adiciona nova feature'`)
 4. Push para a branch (`git push origin feature/nova-feature`)
 5. Abra um Pull Request
 
-## Licença
+## 📝 Licença
 
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes. 
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+## 👥 Autores
+
+- **Luis Andrei** - *Desenvolvedor Principal* - [GitHub](https://github.com/Luis-Andrei)
+
+## 🙏 Agradecimentos
+
+- A todos os contribuidores que ajudaram a melhorar este projeto
+- À comunidade open source por todas as ferramentas utilizadas 
