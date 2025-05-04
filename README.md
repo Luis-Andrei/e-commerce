@@ -23,7 +23,7 @@ Sistema completo de e-commerce com painel administrativo e monitor de impressão
 ```
 /meu-ecommerce/
 │
-├── frontend/                  # Loja virtual (React, Next.js)
+├── frontend/                  # Loja virtual (React, Vite)
 │   ├── public/               # Arquivos estáticos
 │   ├── src/
 │   │   ├── components/       # Componentes reutilizáveis
@@ -105,7 +105,39 @@ cp .env.example .env  # Configure as variáveis de ambiente
 npm install
 ```
 
-### 3. Iniciando os Serviços
+### 3. Configuração das Variáveis de Ambiente
+
+#### Frontend (.env)
+```env
+# Configurações da API
+VITE_API_URL=http://localhost:5000/api
+
+# Configurações da Aplicação
+VITE_APP_NAME=Meu E-commerce
+VITE_APP_DESCRIPTION=Um e-commerce simples e eficiente
+VITE_APP_VERSION=1.0.0
+
+# Chaves de API
+VITE_GOOGLE_MAPS_API_KEY=sua-chave-do-google-maps
+```
+
+#### Backend (.env)
+```env
+# Configurações do Servidor
+PORT=5000
+NODE_ENV=development
+
+# Configurações do MongoDB
+MONGODB_URI=mongodb://localhost:27017/ecommerce
+MONGODB_USER=
+MONGODB_PASS=
+
+# Configurações de Autenticação
+JWT_SECRET=seu_jwt_secret_aqui
+JWT_EXPIRES_IN=24h
+```
+
+### 4. Iniciando os Serviços
 
 #### Backend (API)
 ```bash
@@ -128,7 +160,7 @@ npm run dev
 ```
 Acesse: `http://localhost:3001`
 
-### 4. Scripts Utilitários
+### 5. Scripts Utilitários
 
 #### Monitor de Impressão
 ```bash
