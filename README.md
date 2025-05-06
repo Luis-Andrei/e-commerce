@@ -5,11 +5,29 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
 
-Sistema completo de e-commerce com painel administrativo e monitor de impressão, desenvolvido com tecnologias modernas e escaláveis.
+Sistema completo de e-commerce com painel administrativo, monitor de impressão e **cardápio digital moderno para a Lancheria 3 Alianças**, desenvolvido com tecnologias modernas e escaláveis.
+
+---
+
+## 🍔 Cardápio Digital Lancheria 3 Alianças
+
+- **Visual moderno, aconchegante e responsivo** (desktop e mobile)
+- **Fidelidade ao cardápio físico**: nomes, descrições e preços iguais ao impresso
+- **Carrinho de compras flutuante**: sempre visível, com modal detalhado
+- **Cálculo automático da taxa de entrega** conforme bairro
+- **Finalização de pedido via WhatsApp** (resumo pronto para envio)
+- **Cadastro de usuário e endereço**
+- **Navegação rápida** entre seções do cardápio
+- **Ajustes visuais**: imagens grandes, layout compacto, preços alinhados, botões modernos
+- **Persistência do carrinho** (mesmo após recarregar a página)
+
+---
 
 ## ✨ Funcionalidades
 
 - 🛒 Loja virtual completa
+- 🍔 Cardápio digital responsivo e fiel ao físico
+- 🛒 Carrinho flutuante com modal e integração WhatsApp
 - 👨‍💼 Painel administrativo
 - 📊 Monitor de impressão
 - 🔄 Sincronização de estoque
