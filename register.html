@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registro de Conta - Lancheria 3 Alianças</title>
+  <style>
+    body { font-family: 'Quicksand', Arial, sans-serif; background: #fff8f0; color: #3e2723; display: flex; align-items: center; justify-content: center; height: 100vh; }
+    .register-box { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(198,40,40,0.10); padding: 36px 32px; min-width: 340px; }
+    h2 { text-align: center; color: #c62828; margin-bottom: 18px; }
+    input { width: 100%; padding: 10px; margin-bottom: 14px; border-radius: 8px; border: 1px solid #ffb74d; font-size: 1em; }
+    button { width: 100%; background: #ff7043; color: #fff; border: none; border-radius: 25px; padding: 12px; font-size: 1.1em; font-weight: bold; cursor: pointer; transition: background 0.2s; }
+    button:hover { background: #d84315; }
+    #msg { text-align: center; margin-top: 12px; font-size: 1em; }
+  </style>
+</head>
+<body>
+  <div class="register-box">
+    <h2>Registro de Conta</h2>
+    <form id="registerForm">
+      <input type="text" id="name" placeholder="Nome completo" required><br>
+      <input type="email" id="email" placeholder="E-mail" required><br>
+      <input type="password" id="password" placeholder="Senha" required><br>
+      <input type="password" id="confirmPassword" placeholder="Confirme a senha" required><br>
+      <input type="text" id="street" placeholder="Rua" required><br>
+      <input type="text" id="number" placeholder="Número" required><br>
+      <input type="text" id="complement" placeholder="Complemento (opcional)"><br>
+      <input type="text" id="neighborhood" placeholder="Bairro" required><br>
+      <input type="text" id="city" placeholder="Cidade" required><br>
+      <input type="text" id="state" placeholder="Estado" required><br>
+      <input type="text" id="postalCode" placeholder="CEP" required><br>
+      <input type="text" id="lat" placeholder="Latitude (opcional)"><br>
+      <input type="text" id="lng" placeholder="Longitude (opcional)"><br>
+      <button type="submit">Registrar</button>
+    </form>
+    <div id="msg"></div>
+  </div>
+  <script>
+    document.getElementById('registerForm').onsubmit = async function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+      const street = document.getElementById('street').value;
+      const number = document.getElementById('number').value;
+      const complement = document.getElementById('complement').value;
+      const neighborhood = document.getElementById('neighborhood').value;
+      const city = document.getElementById('city').value;
+      const state = document.getElementById('state').value;
+      const postalCode = document.getElementById('postalCode').value;
+      const lat = document.getElementById('lat').value;
+      const lng = document.getElementById('lng').value;
+      const msg = document.getElementById('msg');
+      if (password !== confirmPassword) {
+        msg.style.color = 'red';
+        msg.textContent = 'As senhas não coincidem!';
+        return;
+      }
+      msg.textContent = 'Registrando...';
+      try {
+        const res = await fetch('http://localhost:5001/api/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name,
+            email,
+            password,
+            address: {
+              street,
+              number,
+              complement,
+              neighborhood,
+              city,
+              state,
+              postalCode,
+              lat: lat ? Number(lat) : 0,
+              lng: lng ? Number(lng) : 0
+            }
+          })
+        });
+        const data = await res.json();
+        if (res.ok) {
+          localStorage.setItem('token', data.token);
+          msg.style.color = 'green';
+          msg.textContent = 'Registro realizado com sucesso!';
+          setTimeout(() => { window.location.href = 'index.html'; }, 1200);
+        } else {
+          msg.style.color = 'red';
+          msg.textContent = data.message || 'Erro ao registrar';
+        }
+      } catch (err) {
+        msg.style.color = 'red';
+        msg.textContent = 'Erro de conexão com o servidor';
+      }
+    };
+  </script>
+</body>
+</html> 

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro de Endereço - Lancheria 3 Alianças</title>
+  <style>
+    body { font-family: 'Quicksand', Arial, sans-serif; background: #fff8f0; color: #3e2723; }
+    .container { max-width: 600px; margin: 40px auto; background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(198,40,40,0.10); padding: 32px 28px; }
+    h1 { color: #c62828; text-align: center; margin-bottom: 18px; }
+    p { text-align: center; color: #6d4c41; margin-bottom: 24px; }
+    label { font-weight: bold; display: block; margin-top: 16px; }
+    input { width: 100%; padding: 10px; margin-top: 4px; border-radius: 8px; border: 1px solid #ffb74d; font-size: 1em; }
+    button { margin-top: 24px; width: 100%; background: #ff7043; color: #fff; border: none; border-radius: 25px; padding: 12px; font-size: 1.1em; font-weight: bold; cursor: pointer; transition: background 0.2s; }
+    button:hover { background: #d84315; }
+    #msg { text-align: center; margin-top: 16px; font-size: 1em; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Cadastro de Endereço para Entrega</h1>
+    <p>Preencha seus dados para facilitar seu pedido e entrega.</p>
+    <form id="enderecoForm">
+      <label for="nome">Nome completo:</label>
+      <input type="text" id="nome" name="nome" required>
+
+      <label for="email">E-mail:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="telefone">Telefone:</label>
+      <input type="tel" id="telefone" name="telefone" required>
+
+      <label for="rua">Rua:</label>
+      <input type="text" id="rua" name="rua" required>
+
+      <label for="numero">Número:</label>
+      <input type="text" id="numero" name="numero" required>
+
+      <label for="complemento">Complemento (opcional):</label>
+      <input type="text" id="complemento" name="complemento">
+
+      <label for="bairro">Bairro:</label>
+      <input type="text" id="bairro" name="bairro" required>
+
+      <label for="cidade">Cidade:</label>
+      <input type="text" id="cidade" name="cidade" required>
+
+      <label for="estado">Estado:</label>
+      <input type="text" id="estado" name="estado" required>
+
+      <label for="cep">CEP:</label>
+      <input type="text" id="cep" name="cep" required>
+
+      <button type="submit">Cadastrar Endereço</button>
+    </form>
+    <div id="msg"></div>
+  </div>
+  <script>
+    document.getElementById('enderecoForm').onsubmit = function(e) {
+      e.preventDefault();
+      document.getElementById('msg').textContent = 'Endereço cadastrado com sucesso!';
+      document.getElementById('msg').style.color = 'green';
+      // Aqui você pode integrar com backend ou WhatsApp se desejar
+      setTimeout(() => { document.getElementById('msg').textContent = ''; }, 3000);
+      document.getElementById('enderecoForm').reset();
+    };
+  </script>
+</body>
+</html> 

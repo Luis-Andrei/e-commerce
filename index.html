@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lancheria 3 Alianças - O Melhor da Gastronomia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+  <script>
+    // Redireciona para a página inicial se não estiver nela
+    if (window.location.pathname !== '/' && window.location.pathname !== '/index.html') {
+      window.location.href = '/';
+    }
+  </script>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Rubik', sans-serif;
+      background: #fff8f0;
+      color: #333;
+      line-height: 1.6;
+    }
+    .header {
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1551782450-a2132b4ba21d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+      color: #fff;
+      text-align: center;
+      padding: 100px 20px;
+    }
+    .header h1 {
+      font-size: 3.5em;
+      margin-bottom: 10px;
+    }
+    .header p {
+      font-size: 1.3em;
+    }
+    .nav {
+      background: #b71c1c;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+    .nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 20px;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+    .nav a:hover {
+      color: #ffd54f;
+    }
+    .content {
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+    .destaques {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+    }
+    .destaque-card {
+      background: #fff;
+      border-radius: 15px;
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .destaque-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+    .destaque-card h3 {
+      color: #d32f2f;
+      margin-bottom: 10px;
+    }
+    .btn {
+      display: inline-block;
+      background: #d32f2f;
+      color: #fff;
+      padding: 12px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      margin-top: 20px;
+      transition: background 0.3s ease;
+    }
+    .btn:hover {
+      background: #c62828;
+    }
+    .rodape {
+      max-width: 1200px;
+      margin: 60px auto 0 auto;
+      border-radius: 30px;
+      background: linear-gradient(90deg, #b71c1c 0%, #d32f2f 100%);
+      color: #fffbe7;
+      text-align: center;
+      padding: 50px 20px 30px 20px;
+      border-top-left-radius: 30px;
+      border-top-right-radius: 30px;
+      box-shadow: 0 -2px 16px rgba(183,28,28,0.10);
+      letter-spacing: 0.5px;
+      font-size: 1.08em;
+    }
+    .rodape p {
+      margin: 12px 0;
+      font-size: 1em;
+      opacity: 0.96;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.08);
+    }
+    .rodape .social-links {
+      margin: 24px 0 18px 0;
+    }
+    .rodape .social-links a {
+      color: #ffd54f;
+      margin: 0 18px;
+      font-size: 2em;
+      text-decoration: none;
+      transition: color 0.3s;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.10));
+    }
+    .rodape .social-links a:hover {
+      color: #fffbe7;
+      text-shadow: 0 2px 8px #ffd54f;
+    }
+    .btn-centro {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="nav" style="display: flex; align-items: center; justify-content: space-between;">
+    <div>
+      <a href="index.html">Início</a>
+      <a href="cardapio.html">Cardápio</a>
+      <a href="sobre.html">Sobre Nós</a>
+      <a href="contato.html">Contato</a>
+    </div>
+    <a href="register.html" class="btn" style="background:#ff7043;color:#fff;border-radius:25px;padding:8px 22px;text-decoration:none;font-weight:bold;font-size:1em;">Registrar</a>
+  </div>
+
+  <div class="header">
+    <h1>🍔 Lancheria 3 Alianças</h1>
+    <p>Os melhores lanches da cidade, feitos com ingredientes selecionados</p>
+    <a href="cardapio.html" class="btn">Ver Cardápio</a>
+  </div>
+
+  <div class="content">
+    <div class="destaques">
+      <div class="destaque-card">
+        <h3>Xis Especial</h3>
+        <p>Nosso carro-chefe, feito com pão de Xis e ingredientes frescos</p>
+        <a href="cardapio.html#xis" class="btn">Ver Detalhes</a>
+      </div>
+      <div class="destaque-card">
+        <h3>Combo Família</h3>
+        <p>Perfeito para reunir a família e amigos</p>
+        <a href="cardapio.html" class="btn">Ver Detalhes</a>
+      </div>
+      <div class="destaque-card">
+        <h3>Registro de Endereço</h3>
+        <p>Cadastre seu endereço para facilitar seu pedido e entrega</p>
+        <a href="contato.html" class="btn btn-meio">Registro de Endereço</a>
+      </div>
+      <div class="destaque-card">
+        <h3>Bebidas</h3>
+        <p></p>
+        <a href="cardapio.html#bebidas" class="btn btn-meio">Ver Detalhes</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="rodape">
+    <div class="social-links">
+      <a href="#">📱</a>
+      <a href="#">📷</a>
+      <a href="#">💬</a>
+    </div>
+    <p>Horário de Funcionamento: Segunda a Quinta e Dimingo, das 19h às 23h</p>
+    <p>Horário de Funcionamento: Sexta e Sabado, das 19h às 1:00h</p>
+    <p>Horário de Funcionamento: Sabados e Domigos, Com possibilidade de atendimendo a Qualquer Horario</p>
+    <p>WhatsApp: (51)9 8043-2074 | WhatsApp: (51) 9 9530-4159</p>
+    <p>Endereço: R. Osvino Plesch, 326 - Canabarro, Teutônia - RS, 95890-000</p>
+  </div>
+</body>
+</html>

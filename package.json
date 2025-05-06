@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "E-commerce fullstack application",
   "scripts": {
-    "start": "docker-compose up",
-    "dev": "docker-compose up --build",
-    "stop": "docker-compose down",
+    "start": "serve .",
+    "dev": "serve .",
+    "stop": "taskkill /F /IM node.exe",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -22,6 +22,7 @@
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.14.1"
+    "mongoose": "^8.14.1",
+    "serve": "^14.2.1"
   }
 }

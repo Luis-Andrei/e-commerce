@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cardápio - Lancheria 3 Alianças</title>
+  <style>
+    body {
+      font-family: 'Quicksand', Arial, sans-serif;
+      background: #fff8f0;
+      color: #3e2723;
+      padding: 20px 0;
+      max-width: 900px;
+      margin: 0 auto;
+      transform: scale(0.9);
+      transform-origin: top center;
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff3e0;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(255,183,77,0.10);
+      padding: 18px 32px;
+      margin-bottom: 36px;
+    }
+    .nav > div {
+      display: flex;
+      gap: 18px;
+    }
+    .nav a {
+      color: #c62828;
+      text-decoration: none;
+      font-weight: bold;
+      font-family: 'Quicksand', Arial, sans-serif;
+      font-size: 1.1em;
+      transition: color 0.2s;
+      padding: 6px 14px;
+      border-radius: 8px;
+    }
+    .nav a:hover, .nav a.active {
+      color: #fff;
+      background: #ff7043;
+    }
+    h1 {
+      text-align: center;
+      color: #c62828;
+      font-family: 'Quicksand', Arial, sans-serif;
+      letter-spacing: 1px;
+      margin-bottom: 18px;
+    }
+    .categoria {
+      margin: 40px 0 32px 0;
+    }
+    .categoria h2 {
+      border-bottom: 2px solid #ffb74d;
+      padding-bottom: 10px;
+      margin-bottom: 24px;
+      color: #bf360c;
+      background: #fff3e0;
+      border-radius: 10px 10px 0 0;
+      box-shadow: 0 2px 8px rgba(255,183,77,0.08);
+      font-size: 1.5em;
+      text-align: left;
+      padding-left: 18px;
+    }
+    .itens-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 18px;
+    }
+    .item {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 18px;
+      border: none;
+      border-radius: 14px;
+      padding: 16px 18px;
+      background: #fff;
+      box-shadow: 0 1px 4px rgba(198,40,40,0.07), 0 1px 2px rgba(255,183,77,0.10);
+      position: relative;
+      transition: box-shadow 0.2s, transform 0.2s;
+      min-height: 120px;
+    }
+    .item:hover {
+      box-shadow: 0 8px 32px rgba(198,40,40,0.13), 0 2px 8px rgba(255,183,77,0.18);
+      transform: translateY(-2px) scale(1.01);
+    }
+    .item-img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(255,183,77,0.13);
+      border: 1.5px solid #ffe0b2;
+      background: #fffde7;
+      flex-shrink: 0;
+    }
+    .item-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    .item-nome {
+      font-size: 1.15em;
+      font-weight: bold;
+      color: #bf360c;
+      margin-bottom: 4px;
+      font-family: 'Quicksand', Arial, sans-serif;
+    }
+    .item-desc {
+      font-size: 0.98em;
+      color: #6d4c41;
+      margin-bottom: 8px;
+    }
+    .item-preco-btn-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 2px;
+    }
+    .item-preco {
+      font-size: 1.1em;
+      font-weight: bold;
+      color: #c62828;
+      min-width: unset;
+      text-align: left;
+      margin-left: 0;
+    }
+    .item-btn {
+      background: #ff7043;
+      color: #fff;
+      border: none;
+      border-radius: 25px;
+      padding: 10px 22px 10px 18px;
+      font-size: 1rem;
+      font-family: 'Quicksand', Arial, sans-serif;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(255,183,77,0.10);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.2s, transform 0.2s;
+      margin-left: 0;
+      margin-top: 0;
+    }
+    .item-btn:hover {
+      background: #d84315;
+      transform: scale(1.06);
+    }
+    .item-btn .heart {
+      font-size: 1.2em;
+      color: #ffb74d;
+      margin-right: 2px;
+    }
+    .item-btn .cart {
+      font-size: 1.3em;
+      margin-right: 0;
+    }
+    .rodape {
+      text-align: center;
+      margin-top: 40px;
+      color: #a1887f;
+      font-size: 0.98rem;
+      background: #fff3e0;
+      border-radius: 12px;
+      padding: 18px 0 10px 0;
+      box-shadow: 0 2px 8px rgba(255,183,77,0.08);
+    }
+    .observacao {
+      background: #ffe0b2;
+      padding: 15px;
+      border-radius: 10px;
+      margin: 20px 0;
+      font-size: 1rem;
+      color: #6d4c41;
+      box-shadow: 0 2px 8px rgba(255,183,77,0.10);
+    }
+    @media (max-width: 700px) {
+      .itens-grid { grid-template-columns: 1fr; }
+      .item-img { width: 100px; height: 100px; }
+      .item { flex-direction: column; align-items: center; padding: 12px 6px; }
+      .categoria h2 { font-size: 1.15em; padding-left: 8px; }
+      .nav { flex-direction: column; gap: 10px; padding: 12px 8px; }
+    }
+    .cart-float {
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      background: #ff7043;
+      color: #fff;
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(255,183,77,0.18);
+      cursor: pointer;
+      z-index: 1001;
+    }
+    .cart-icon {
+      font-size: 2em;
+    }
+    .cart-count {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: #fff3e0;
+      color: #c62828;
+      border-radius: 50%;
+      width: 22px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1em;
+      box-shadow: 0 1px 4px rgba(255,183,77,0.13);
+    }
+    .cart-modal {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1002;
+    }
+    .cart-modal-content {
+      background: #fff8f0;
+      border-radius: 16px;
+      padding: 32px 24px 80px 24px;
+      min-width: 320px;
+      max-width: 90vw;
+      box-shadow: 0 4px 24px rgba(198,40,40,0.13);
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .cart-modal-footer {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #fff8f0;
+      padding: 16px 24px;
+      border-bottom-left-radius: 16px;
+      border-bottom-right-radius: 16px;
+      box-shadow: 0 -2px 8px rgba(198,40,40,0.05);
+      text-align: center;
+    }
+    .close-cart {
+      position: absolute;
+      top: 12px;
+      right: 18px;
+      font-size: 2em;
+      color: #c62828;
+      cursor: pointer;
+    }
+    #cart-items {
+      list-style: none;
+      margin: 0 0 18px 0;
+      padding: 0;
+    }
+    #cart-items li {
+      margin-bottom: 10px;
+      font-size: 1.1em;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    #cart-items button {
+      background: #ff7043;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 4px 10px;
+      margin-left: 10px;
+      cursor: pointer;
+      font-size: 0.95em;
+    }
+    .cart-total {
+      font-size: 1.2em;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #c62828;
+    }
+    .cart-input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 8px;
+      border-radius: 8px;
+      border: 1px solid #ffb74d;
+      font-size: 1em;
+      box-sizing: border-box;
+    }
+    .cart-section { margin-bottom: 18px; }
+    .cart-section-title { font-weight: bold; color: #c62828; margin-bottom: 6px; font-size: 1.08em; }
+    .cart-divider { border: none; border-top: 1.5px solid #ffe0b2; margin: 18px 0; }
+  </style>
+</head>
+<body>
+  <div class="cart-float" id="cart-float">
+    <span class="cart-icon">🛒</span>
+    <span class="cart-count" id="cart-count">0</span>
+  </div>
+  <div class="cart-modal" id="cart-modal" style="display:none;">
+    <div class="cart-modal-content">
+      <span class="close-cart" id="close-cart">&times;</span>
+      <h2>Seu Carrinho</h2>
+      <div class="cart-section">
+        <div class="cart-section-title">Dados do Cliente</div>
+        <label for="nomeCliente">Nome:</label>
+        <input type="text" id="nomeCliente" class="cart-input" placeholder="Seu nome" autocomplete="name">
+        <label for="telefoneCliente">Telefone:</label>
+        <input type="text" id="telefoneCliente" class="cart-input" placeholder="(XX) XXXXX-XXXX" autocomplete="tel">
+      </div>
+      <div class="cart-section">
+        <div class="cart-section-title">Endereço de Entrega</div>
+        <input type="text" id="enderecoCompletoCliente" class="cart-input" placeholder="Rua, número, bairro, cidade" autocomplete="street-address">
+        <div style="margin-top:8px;">
+          <label for="bairro-entrega"><b>Bairro para entrega:</b></label>
+          <select id="bairro-entrega" style="margin-left:8px;">
+            <option value="Canabarro">Canabarro</option>
+            <option value="Centro">Centro</option>
+            <option value="Centro Administrativo">Centro Administrativo</option>
+            <option value="Languiru">Languiru</option>
+            <option value="Boa Vista">Boa Vista</option>
+            <option value="Pontes Filho">Pontes Filho</option>
+            <option value="Alesgut">Alesgut</option>
+            <option value="Linha Frank">Linha Frank</option>
+            <option value="Teutônia">Teutônia</option>
+            <option value="Bairro Linha Harmonia">Bairro Linha Harmonia</option>
+            <option value="outro">Outro bairro</option>
+          </select>
+          <input type="text" id="outro-bairro" placeholder="Digite o bairro" style="display:none; margin-top:8px; width:90%; padding:8px; border-radius:8px; border:1px solid #ffb74d;" />
+        </div>
+      </div>
+      <div class="cart-section">
+        <div class="cart-section-title">Forma de Pagamento</div>
+        <label style="margin-right:12px;"><input type="radio" name="pagamento" value="Pix" checked> Pix</label>
+        <label style="margin-right:12px;"><input type="radio" name="pagamento" value="Crédito"> Crédito</label>
+        <label><input type="radio" name="pagamento" value="Débito"> Débito</label>
+      </div>
+      <hr class="cart-divider">
+      <div class="cart-section">
+        <div class="cart-section-title">Itens do Pedido</div>
+        <ul id="cart-items"></ul>
+      </div>
+      <div class="cart-section">
+        <div class="cart-total">Produtos: <span id="cart-total-prod">R$0,00</span></div>
+        <div class="cart-total">Entrega: <span id="cart-total-entrega">R$5,00</span></div>
+        <div class="cart-total" style="font-size:1.25em;">Total: <span id="cart-total">R$0,00</span></div>
+      </div>
+      <div class="cart-modal-footer">
+        <button id="finalizar-pedido" class="item-btn" style="width:100%;">Finalizar Pedido</button>
+      </div>
+    </div>
+  </div>
+  <div class="nav">
+    <a href="index.html">Início</a>
+    <a href="cardapio.html">Cardápio</a>
+    <a href="sobre.html">Sobre Nós</a>
+    <a href="contato.html">Contato</a>
+  </div>
+
+  <h1>🍔 Lancheria 3 Alianças — Cardápio</h1>
+
+  <div class="categoria">
+    <h2>Combos Especiais</h2>
+    <div class="itens-grid">
+      <div class="item"><div class="item-info"><div class="item-nome">Combo Econômico</div><div class="item-desc">1 Xis Salada + 1 Refrigerante Lata</div></div><div class="item-preco-btn-row"><div class="item-preco">R$ 28,00</div><button class="item-btn"><span class="cart">🛒</span></button></div></div>
+      <div class="item"><div class="item-info"><div class="item-nome">Combo Cachorro Simples</div><div class="item-desc">2 Cachorros Quentes Simples + 1 Refrigerante 2L</div></div><div class="item-preco-btn-row"><div class="item-preco">R$ 45,00</div><button class="item-btn"><span class="cart">🛒</span></button></div></div>
+      <div class="item"><div class="item-info"><div class="item-nome">Combo Dupla Clássica</div><div class="item-desc">2 Xis Salada + 1 Refrigerante 2L</div></div><div class="item-preco-btn-row"><div class="item-preco">R$ 55,00</div><button class="item-btn"><span class="cart">🛒</span></button></div></div>
+      <div class="item"><div class="item-info"><div class="item-nome">Combo Cachorro com Batata</div><div class="item-desc">2 Cachorros Quentes Simples + 1 Porção de Batata Frita 200g + 1 Refrigerante 2L</div></div><div class="item-preco-btn-row"><div class="item-preco">R$ 57,00</div><button class="item-btn"><span class="cart">🛒</span></button></div></div>
+      <div class="item"><div class="item-info"><div class="item-nome">Combo Dupla com Batata</div><div class="item-desc">2 Xis Salada + 1 Porção de Batata Frita 200g + 1 Refrigerante 2L</div></div><div class="item-preco-btn-row"><div class="item-preco">R$ 67,00</div><button class="item-btn"><span class="cart">🛒</span></button></div></div>
+      <div class="item"><div class="item-info"><div class="item-nome">Combo Trinca Xis</div><div class="item-desc">3 Xis Salada + 1 Refrigerante 2L</div></div><div class="item-preco-btn-row"><div class="item-preco">R$ 80,00</div><button class="item-btn"><span class="cart">🛒</span></button></div></div>
+      <div class="item"><div class="item-info"><div class="item-nome">Combo Trinca Completa</div><div class="item-desc">3 Xis Salada + 1 Porção de Batata Frita 200g + 1 Refrigerante 2L</div></div><div class="item-preco-btn-row"><div class="item-preco">R$ 92,00</div><button class="item-btn"><span class="cart">🛒</span></button></div></div>
+      <div class="item"><div class="item-info"><div class="item-nome">Combo Família</div><div class="item-desc">4 Xis + 2 Porções de Batata Frita Grande + 2 Refrigerantes 2L</div></div><div class="item-preco-btn-row"><div class="item-preco">R$ 140,00</div><button class="item-btn"><span class="cart">🛒</span></button></div></div>
+    </div>
+  </div>
+
+  <div class="categoria" id="xis">
+    <h2>Xis</h2>
+    <div class="itens-grid">
+      <div class="item"><img src="/frontend/public/images/xis-salada.jpg" alt="Xis Salada" class="item-img"><div class="item-info"><div class="item-nome">Xis Salada</div><div class="item-desc">Pão, milho, ervilha, maionese, tomate, ovo, tempero verde, alface, catchup, mostarda, queijo, presunto e bife</div></div><div class="item-preco-btn-row"><div class="item-preco">R$25,00</div><button class="item-btn"><span class="cart">🛒</span></button></div></div>
+      <div class="item"><img src="/frontend/public/images/xis-frango.jpg" alt="Xis Frango" class="item-img"><div class="item-info"><div class="item-nome">Xis Frango</div><div class="item-desc">Pão, milho, ervilha, maionese, tomate, ovo, tempero verde, alface, catchup, mostarda, queijo, presunto e frango</div></div><div class="item-preco-btn-row"><div class="item-preco">R$26,00</div><button class="item-btn"><span class="cart">🛒</span></button></div></div>
+      <div class="item"><img src="/frontend/public/images/xis-calabresa.jpg" alt="Xis Calabresa" class="item-img"><div class="item-info"><div class="item-nome">Xis Calabresa</div><div class="item-desc">Pão, milho, ervilha, maionese, tomate, ovo, tempero verde, alface, catchup, mostarda, queijo, presunto e calabresa</div></div><div class="item-preco-btn-row"><div class="item-preco">R$28,00</div><button class="item-btn"><span class="cart">🛒</span></button></div></div>
+      <div class="item"><img src="/frontend/public/images/xis-bacon.jpg" alt="Xis Bacon" class="item-img"><div class="item-info"><div class="item-nome">Xis Bacon</div><div class="item-desc">Pão, milho, ervilha, maionese, tomate, ovo, tempero verde, alface, catchup, mostarda, queijo, presunto e bacon</div></div><div class="item-preco-btn-row"><div class="item-preco">R$30,00</div><button class="item-btn"><span class="cart">🛒</span></button></div></div>
+      <div class="item"><img src="/frontend/public/images/xis-coracao.jpg" alt="Xis Coração" class="item-img"><div class="item-info"><div class="item-nome">Xis Coração</div><div class="item-desc">Pão, milho, ervilha, maionese, tomate, ovo, tempero verde, alface, catchup, mostarda, queijo, presunto e coração</div></div><div class="item-preco-btn-row"><div class="item-preco">R$32,00</div><button class="item-btn"><span class="cart">🛒</span></button></div></div>
+      <div class="item"><img src="/frontend/public/images/xis-tudo.jpg" alt="Xis Tudo" class="item-img"><div class="item-info"><div class="item-nome">Xis Tudo</div><div class="item-desc">Pão, milho, ervilha, maionese, tomate, ovo, tempero verde, alface, catchup, mostarda, queijo, presunto, coração e filé suíno</div></div><div class="item-preco-btn-row"><div class="item-preco">R$32,00</div><button class="item-btn"><span class="cart">🛒</span></button></div></div>
+    </div>
+  </div>
+
+  <div class="categoria">
+    <h2>Cachorro Quente</h2>
+    <div class="itens-grid">
+      <div class="item"><img src="/frontend/public/images/cachorro-quente-simples.jpg" alt="Cachorro Simples" class="item-img"><div class="item-info"><div class="item-nome">Simples</div><div class="item-desc">Pão, molho de salsicha, catchup, mostarda, milho, ervilha, batata palha, tempero verde, salsicha</div></div><div class="item-preco-btn-row"><div class="item-preco">R$20,00</div><button class="item-btn"><span class="cart">🛒</span></button></div></div>
+      <div class="item"><img src="/frontend/public/images/cachorro-quente-duplo.jpg" alt="Cachorro Duplo" class="item-img"><div class="item-info"><div class="item-nome">Duplo</div><div class="item-desc">Pão, molho de salsicha, catchup, mostarda, milho, ervilha, batata palha, tempero verde, duas salsichas</div></div><div class="item-preco-btn-row"><div class="item-preco">R$23,00</div><button class="item-btn"><span class="cart">🛒</span></button></div></div>
+      <div class="item"><div class="item-info"><div class="item-nome">De Frango</div><div class="item-desc">Pão, molho de salsicha, catchup, mostarda, milho, ervilha, batata palha, tempero verde e frango</div></div><div class="item-preco-btn-row"><div class="item-preco">R$26,00</div><button class="item-btn"><span class="cart">🛒</span></button></div></div>
+      <div class="item"><div class="item-info"><div class="item-nome">De Carne</div><div class="item-desc">Pão, molho de salsicha, catchup, mostarda, milho, ervilha, batata palha, tempero verde e carne</div></div><div class="item-preco-btn-row"><div class="item-preco">R$25,00</div><button class="item-btn"><span class="cart">🛒</span></button></div></div>
+      <div class="item"><div class="item-info"><div class="item-nome">De Calabresa</div><div class="item-desc">Pão, molho de salsicha, catchup, mostarda, milho, ervilha, batata palha, tempero verde e calabresa</div></div><div class="item-preco-btn-row"><div class="item-preco">R$27,00</div><button class="item-btn"><span class="cart">🛒</span></button></div></div>
+    </div>
+  </div>
+
+  <div class="categoria">
+    <h2>Adicionais e Porções</h2>
+    <div class="itens-grid">
+      <div class="item"><img src="/frontend/public/images/batata-frita-pequena.jpg" alt="Batata Frita 200g" class="item-img"><div class="item-info"><div class="item-nome">Batata Frita 200g</div></div><div class="item-preco-btn-row"><div class="item-preco">R$15,00</div><button class="item-btn"><span class="cart">🛒</span></button></div></div>
+      <div class="item"><img src="/frontend/public/images/batata-frita-media.jpg" alt="Batata Frita 280g" class="item-img"><div class="item-info"><div class="item-nome">Batata Frita 280g</div></div><div class="item-preco-btn-row"><div class="item-preco">R$20,00</div><button class="item-btn"><span class="cart">🛒</span></button></div></div>
+      <div class="item"><img src="/frontend/public/images/batata-frita-media.jpg" alt="Batata Frita 350g" class="item-img"><div class="item-info"><div class="item-nome">Batata Frita 350g</div></div><div class="item-preco-btn-row"><div class="item-preco">R$25,00</div><button class="item-btn"><span class="cart">🛒</span></button></div></div>
+      <div class="item"><img src="/frontend/public/images/batata-frita-grande.jpg" alt="Batata Frita 400g" class="item-img"><div class="item-info"><div class="item-nome">Batata Frita 400g</div></div><div class="item-preco-btn-row"><div class="item-preco">R$30,00</div><button class="item-btn"><span class="cart">🛒</span></button></div></div>
+    </div>
+  </div>
+
+  <div class="categoria">
+    <h2>Torradas</h2>
+    <div class="itens-grid">
+      <div class="item"><img src="/frontend/public/images/torrada-ovo.jpg" alt="Torrada com Ovo" class="item-img"><div class="item-info"><div class="item-nome">Torrada com Ovo</div><div class="item-desc">no pão de Xis</div></div><div class="item-preco-btn-row"><div class="item-preco">R$17,00</div><button class="item-btn"><span class="cart">🛒</span></button></div></div>
+    </div>
+  </div>
+
+  <div class="categoria">
+    <h2>Picadão</h2>
+    <div class="itens-grid">
+      <div class="item"><img src="/frontend/public/images/picadao-1.jpg" alt="Picadão 1 Pessoa" class="item-img"><div class="item-info"><div class="item-nome">1 Pessoa</div><div class="item-desc">Azeitona, batata frita, queijo, carne de res, coração, frango, calabresa e anel de cebola</div></div><div class="item-preco-btn-row"><div class="item-preco">R$65,00</div><button class="item-btn"><span class="cart">🛒</span></button></div></div>
+      <div class="item"><img src="/frontend/public/images/picadao-2.jpg" alt="Picadão 2 Pessoas" class="item-img"><div class="item-info"><div class="item-nome">2 Pessoas</div><div class="item-desc">Azeitona, batata frita, queijo, carne de res, coração, frango, calabresa e anel de cebola</div></div><div class="item-preco-btn-row"><div class="item-preco">R$95,00</div><button class="item-btn"><span class="cart">🛒</span></button></div></div>
+      <div class="item"><img src="/frontend/public/images/picadao-3.jpg" alt="Picadão 3 Pessoas" class="item-img"><div class="item-info"><div class="item-nome">3 Pessoas</div><div class="item-desc">Azeitona, batata frita, queijo, carne de res, coração, frango, calabresa e anel de cebola</div></div><div class="item-preco-btn-row"><div class="item-preco">R$120,00</div><button class="item-btn"><span class="cart">🛒</span></button></div></div>
+      <div class="item"><img src="/frontend/public/images/picadao-4.jpg" alt="Picadão 4 Pessoas" class="item-img"><div class="item-info"><div class="item-nome">4 Pessoas</div><div class="item-desc">Azeitona, batata frita, queijo, carne de res, coração, frango, calabresa e anel de cebola</div></div><div class="item-preco-btn-row"><div class="item-preco">R$160,00</div><button class="item-btn"><span class="cart">🛒</span></button></div></div>
+    </div>
+  </div>
+
+  <div class="categoria" id="bebidas">
+    <h2>Bebidas</h2>
+    <div class="itens-grid">
+      <div class="item"><img src="/frontend/public/images/refri-guarana-lata.jpg" alt="Refri lata Guaraná" class="item-img"><div class="item-info"><div class="item-nome">Refri lata Guaraná</div></div><div class="item-preco-btn-row"><div class="item-preco">R$6,00</div><button class="item-btn"><span class="cart">🛒</span></button></div></div>
+      <div class="item"><img src="/frontend/public/images/refri-pepsi-lata.jpg" alt="Refri lata Pepsi" class="item-img"><div class="item-info"><div class="item-nome">Refri lata Pepsi</div></div><div class="item-preco-btn-row"><div class="item-preco">R$6,00</div><button class="item-btn"><span class="cart">🛒</span></button></div></div>
+      <div class="item"><img src="/frontend/public/images/refri-guarana-2l.jpg" alt="Guaraná 2L" class="item-img"><div class="item-info"><div class="item-nome">Guaraná 2L</div></div><div class="item-preco-btn-row"><div class="item-preco">R$12,00</div><button class="item-btn"><span class="cart">🛒</span></button></div></div>
+      <div class="item"><img src="/frontend/public/images/refri-pepsi-2l.jpg" alt="Pepsi 2L" class="item-img"><div class="item-info"><div class="item-nome">Pepsi 2L</div></div><div class="item-preco-btn-row"><div class="item-preco">R$12,00</div><button class="item-btn"><span class="cart">🛒</span></button></div></div>
+      <div class="item"><img src="/frontend/public/images/Skol-Lata.jpg" alt="Cerveja lata" class="item-img"><div class="item-info"><div class="item-nome">Cerveja lata</div></div><div class="item-preco-btn-row"><div class="item-preco">R$7,00</div><button class="item-btn"><span class="cart">🛒</span></button></div></div>
+      <div class="item"><img src="/frontend/public/images/Polar-Lata.jpg" alt="Polar Lata" class="item-img"><div class="item-info"><div class="item-nome">Polar Lata</div></div><div class="item-preco-btn-row"><div class="item-preco">R$7,00</div><button class="item-btn"><span class="cart">🛒</span></button></div></div>
+      <div class="item"><img src="/frontend/public/images/Bhahma-Lata.jpg" alt="Brahma Lata" class="item-img"><div class="item-info"><div class="item-nome">Brahma Lata</div></div><div class="item-preco-btn-row"><div class="item-preco">R$7,00</div><button class="item-btn"><span class="cart">🛒</span></button></div></div>
+      <div class="item"><img src="/frontend/public/images/Schin-Lata.jpg" alt="Schin Lata" class="item-img"><div class="item-info"><div class="item-nome">Schin Lata</div></div><div class="item-preco-btn-row"><div class="item-preco">R$7,00</div><button class="item-btn"><span class="cart">🛒</span></button></div></div>
+    </div>
+  </div>
+
+  <div class="observacao">
+    <p><strong>Observações:</strong></p>
+    <p>Retirada e tele-entrega.</p>
+    <p>Consulte disponibilidade de ingredientes e promoções do dia.</p>
+  </div>
+
+  <div class="rodape">
+    <p>Horário de Funcionamento: Segunda a Quinta e Dimingo, das 19h às 23h</p>
+    <p>Horário de Funcionamento: Sexta e Sabado, das 19h às 1:00h</p>
+    <p>Horário de Funcionamento: Sabados e Domigos, Com possibilidade de atendimendo a Qualquer Horario</p>
+    <p>WhatsApp: (51)9 8043-2074 | WhatsApp: (51) 9 9530-4159</p>
+    <p>Endereço: R. Osvino Plesch, 326 - Canabarro, Teutônia - RS, 95890-000</p>
+    <p><strong>Taxa de entrega:</strong> a partir de R$5,00 (quanto mais longe, maior o valor da entrega)</p>
+  </div>
+  <script>
+    // Carrinho de compras simples
+    let cart = [];
+    
+    // Função para salvar o carrinho no localStorage
+    function saveCart() {
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+    // Função para carregar o carrinho do localStorage
+    function loadCart() {
+      const savedCart = localStorage.getItem('cart');
+      if (savedCart) {
+        cart = JSON.parse(savedCart);
+        updateCartCount();
+      }
+    }
+
+    // Carregar carrinho ao iniciar a página
+    loadCart();
+
+    function updateCartCount() {
+      document.getElementById('cart-count').textContent = cart.reduce((sum, item) => sum + item.qtd, 0);
+    }
+
+    const bairros = {
+      'Canabarro': 5,
+      'Centro': 6,
+      'Centro Administrativo': 7,
+      'Languiru': 10,
+      'Boa Vista': 10,
+      'Pontes Filho': 10,
+      'Alesgut': 11,
+      'Linha Frank': 12,
+      'Teutônia': 10,
+      'Bairro Linha Harmonia': 15
+    };
+
+    function getEntrega() {
+      const bairroSel = document.getElementById('bairro-entrega').value;
+      if (bairros[bairroSel]) return bairros[bairroSel];
+      if (bairroSel === 'outro') {
+        const outro = document.getElementById('outro-bairro').value.trim().toLowerCase();
+        let valor = 20;
+        if (outro.includes('longe')) valor += 10;
+        if (outro.includes('muito longe')) valor += 20;
+        if (outro.includes('extremo') || outro.includes('zona rural')) valor += 30;
+        return valor;
+      }
+      return 20;
+    }
+
+    function updateCartModal() {
+      const ul = document.getElementById('cart-items');
+      ul.innerHTML = '';
+      let total = 0;
+      cart.forEach((item, idx) => {
+        const li = document.createElement('li');
+        li.innerHTML = `${item.nome} <b>${item.preco}</b> x${item.qtd} <button onclick="removeFromCart(${idx})">Remover</button>`;
+        ul.appendChild(li);
+        total += parseFloat(item.preco.replace('R$', '').replace(',', '.')) * item.qtd;
+      });
+      document.getElementById('cart-total-prod').textContent = 'R$' + total.toFixed(2).replace('.', ',');
+      const entrega = getEntrega();
+      document.getElementById('cart-total-entrega').textContent = 'R$' + entrega.toFixed(2).replace('.', ',');
+      document.getElementById('cart-total').textContent = 'R$' + (total+entrega).toFixed(2).replace('.', ',');
+    }
+
+    function removeFromCart(idx) {
+      cart.splice(idx, 1);
+      saveCart();
+      updateCartCount();
+      updateCartModal();
+    }
+
+    // Adicionar evento de clique aos botões do carrinho
+    document.querySelectorAll('.item-btn').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const itemDiv = btn.closest('.item');
+        const nome = itemDiv.querySelector('.item-nome')?.textContent || 'Item';
+        const preco = itemDiv.querySelector('.item-preco')?.textContent || 'R$0,00';
+        const found = cart.find(i => i.nome === nome && i.preco === preco);
+        if (found) { 
+          found.qtd += 1; 
+        } else { 
+          cart.push({ nome, preco, qtd: 1 }); 
+        }
+        saveCart();
+        updateCartCount();
+      });
+    });
+
+    // Eventos do modal do carrinho
+    document.getElementById('cart-float').onclick = function() {
+      document.getElementById('cart-modal').style.display = 'flex';
+      updateCartModal();
+    };
+
+    document.getElementById('close-cart').onclick = function() {
+      document.getElementById('cart-modal').style.display = 'none';
+    };
+
+    // Fechar modal ao clicar fora
+    window.onclick = function(event) {
+      const modal = document.getElementById('cart-modal');
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
+    };
+
+    document.getElementById('finalizar-pedido').onclick = function() {
+      const nome = document.getElementById('nomeCliente').value.trim();
+      const tel = document.getElementById('telefoneCliente').value.trim();
+      const endereco = document.getElementById('enderecoCompletoCliente').value.trim();
+      const pagamento = document.querySelector('input[name="pagamento"]:checked')?.value || '';
+      
+      if (!nome || !tel || !endereco) {
+        alert('Por favor, preencha nome, telefone e endereço completo.');
+        return;
+      }
+
+      let resumo = `Pedido de: ${nome}\nTelefone: ${tel}\nEndereço: ${endereco}\nPagamento: ${pagamento}\n\nItens:\n`;
+      cart.forEach(item => {
+        resumo += `- ${item.nome} (${item.preco}) x${item.qtd}\n`;
+      });
+      resumo += `\nTotal: ` + document.getElementById('cart-total').textContent;
+      
+      // Enviar para o WhatsApp
+      const whatsappNumber = '51980432074';
+      const message = encodeURIComponent(resumo);
+      window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+      
+      // Limpar carrinho após envio
+      cart = [];
+      saveCart();
+      updateCartCount();
+      document.getElementById('cart-modal').style.display = 'none';
+    };
+
+    // Eventos do bairro
+    document.getElementById('bairro-entrega').onchange = function() {
+      if (this.value === 'outro') {
+        document.getElementById('outro-bairro').style.display = 'block';
+      } else {
+        document.getElementById('outro-bairro').style.display = 'none';
+      }
+      updateCartModal();
+    };
+
+    document.getElementById('outro-bairro').oninput = updateCartModal;
+  </script>
+</body>
+</html>

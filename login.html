@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Lancheria 3 Alianças</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body { font-family: 'Quicksand', Arial, sans-serif; background: #fff8f0; color: #3e2723; display: flex; align-items: center; justify-content: center; height: 100vh; }
+    .login-box { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(198,40,40,0.10); padding: 36px 32px; min-width: 320px; }
+    h2 { text-align: center; color: #c62828; margin-bottom: 24px; }
+    input { width: 100%; padding: 10px; margin-bottom: 16px; border-radius: 8px; border: 1px solid #ffb74d; font-size: 1em; }
+    button { width: 100%; background: #ff7043; color: #fff; border: none; border-radius: 25px; padding: 12px; font-size: 1.1em; font-weight: bold; cursor: pointer; transition: background 0.2s; }
+    button:hover { background: #d84315; }
+    #msg { text-align: center; margin-top: 12px; font-size: 1em; }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2>Login</h2>
+    <form id="loginForm">
+      <input type="email" id="email" placeholder="E-mail" required><br>
+      <input type="password" id="password" placeholder="Senha" required><br>
+      <button type="submit">Entrar</button>
+    </form>
+    <div id="msg"></div>
+    <div style="margin-top: 18px; text-align: center;">
+      <a href="register.html" class="btn" style="display:inline-block; background:#ff7043; color:#fff; border-radius:25px; padding:10px 28px; text-decoration:none; font-weight:bold; margin-bottom: 10px;">Criar conta</a>
+    </div>
+    <div style="margin-top: 10px; text-align: center;">
+      <div style="color: #6d4c41; font-size: 1em; margin-bottom: 8px;">Cadastre seu endereço para facilitar seu pedido e entrega</div>
+      <a href="contato.html" class="btn" style="display:inline-block; background:#ff7043; color:#fff; border-radius:25px; padding:10px 28px; text-decoration:none; font-weight:bold;">Registro de Endereço</a>
+    </div>
+  </div>
+  <script>
+    document.getElementById('loginForm').onsubmit = async function(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const msg = document.getElementById('msg');
+      msg.textContent = 'Entrando...';
+      try {
+        const res = await fetch('http://localhost:5001/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password })
+        });
+        const data = await res.json();
+        if (res.ok) {
+          localStorage.setItem('token', data.token);
+          msg.style.color = 'green';
+          msg.textContent = 'Login realizado com sucesso!';
+          setTimeout(() => { window.location.href = 'index.html'; }, 1200);
+        } else {
+          msg.style.color = 'red';
+          msg.textContent = data.message || 'Erro ao fazer login';
+        }
+      } catch (err) {
+        msg.style.color = 'red';
+        msg.textContent = 'Erro de conexão com o servidor';
+      }
+    };
+  </script>
+</body>
+</html> 
